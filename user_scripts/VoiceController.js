@@ -1,3 +1,6 @@
+"use strict";
+
+
 (function(){
     var pressButton = function(button, time) {
         if( button in IodineGUI.mapButtontoIndex ){
@@ -11,11 +14,20 @@
         return;
     }
 
-    var SpeechRecognition =  SpeechRecognition ||
-                          webkitSpeechRecognition ||
-                          mozSpeechRecognition ||
-                          msSpeechRecognition ||
-                          oSpeechRecognition;
+    var SpeechRecognition = null;
+    var checks = ['SpeechRecognition', 'webkitSpeechRecognition', 
+    'mozSpeechRecognition', 'msSpeechRecognition', 'oSpeechRecognition'];
+
+
+    var check;
+    for (var k = 0; k < checks.length; k++){
+        check = checks[k];
+        if(check in window){
+            SpeechRecognition = window[check];
+            break;
+        }       
+    }
+
 
     if (SpeechRecognition){
         var recognition = new SpeechRecognition();
