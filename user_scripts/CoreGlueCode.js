@@ -18,6 +18,7 @@ var IodineGUI = {
     suspended:false,
     startTime:(+(new Date()).getTime()),
     mixerInput:null,
+    mapButtontoIndex: {"a":0, "b":1, "select":2, "start":3, "right":4, "left": 5, "up":6 ,"down":7, "r":8, "l":9},
     defaults:{
         timerRate:16,
         sound:true,
